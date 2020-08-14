@@ -1,7 +1,22 @@
 import React from 'react';
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 
 const MovieCard = props => {
   const { title, director, metascore, stars } = props.movie;
+  const params= useParams();
+
+  const deleteMovie = event => {
+    event.preventDefault();
+    axios.delete("http://localhost:5000/api/movies/" + params.id)
+    .then(res => {
+      console.log(res);
+      props.getMovieList();
+      //props.history.push("/");
+      console.log(props);
+    });
+  };
+
   return (
     <div className="movie-card">
       <h2>{title}</h2>
@@ -18,6 +33,10 @@ const MovieCard = props => {
           {star}
         </div>
       ))}
+      <Link to={`/update-movie/${props.movie.id}`}>
+        <button>Edit</button>
+      </Link>
+      <button onClick={deleteMovie}>Delete</button>
     </div>
   );
 };

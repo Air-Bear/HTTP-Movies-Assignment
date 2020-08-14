@@ -75,3 +75,24 @@ body {
   color: red;
   text-align: center;
 }
+
+form{
+  display: block;
+  width: 25%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+form label{
+  display: block;
+}
+
+form input {
+  width: 100%;
+  text-align: center;
+}
+
+form button{
+  margin-top: .5rem;
+  padding: .5rem 1.5rem;
+}
